@@ -2,7 +2,7 @@
 # Valid moves are "up", "down", "left", or "right".
 # TODO: Use the information in board to decide your next move.
 def move(board)
-  # puts board
+  puts board
   puts "Board State: "
   puts board[:board]
   # Choose a random direction to move in
