@@ -3,7 +3,8 @@
 # TODO: Use the information in board to decide your next move.
 def move(board)
   # puts board
-  puts "Board State: " + board[:board]
+  puts "Board State: "
+  puts board[:board]
   # Choose a random direction to move in
   possible_moves = ["up", "down", "left", "right"]
   move = possible_moves.sample
