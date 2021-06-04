@@ -3,25 +3,17 @@
 # TODO: Use the information in board to decide your next move.
 SNAKE_NAME = "Local-Snake-Ngrok"
 $dest = [0,0]
-
+$games = Hash.new(0)
 
 def move(board)
-
-
   # possible_moves = ["up", "down", "left", "right"]
   head = [board[:you][:head][:x], board[:you][:head][:y]]
-  
-  # puts "The current head location is #{head}"
-  # if head == [0, 0]
-  #   puts "Switching target to 10, 0"
-  #   $dest = [10, 0]
-  # elsif head == [10, 0]
-  #   puts "Switching target to 10, 10"
-  #   $dest = [10, 10]
-  # end
+  puts board[:game][:id]
   getDest(head)
+
   move = moveTo($dest, head)
   puts "MOVE: " + move
+
   { "move": move }
 
 end
@@ -29,10 +21,8 @@ end
 def getDest(head)
   puts "The current head location is #{head}"
   if head == [0, 0]
-    puts "Switching target to 10, 0"
     $dest = [10, 0]
   elsif head == [10, 0]
-    puts "Switching target to 10, 10"
     $dest = [10, 10]
   elsif head == [10, 10]
     $dest = [0, 10]
