@@ -34,6 +34,10 @@ def getDest(head)
   elsif head == [10, 0]
     puts "Switching target to 10, 10"
     $dest = [10, 10]
+  elsif head == [10, 10]
+    $dest = [0, 10]
+  elsif head == [0, 10]
+    $dest = [0, 0]
   end
   
 end
