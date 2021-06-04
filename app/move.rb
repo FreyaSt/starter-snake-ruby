@@ -2,10 +2,11 @@
 # Valid moves are "up", "down", "left", or "right".
 # TODO: Use the information in board to decide your next move.
 SNAKE_NAME = "Local-Snake-Ngrok"
+dest = [0,0]
+
 
 def move(board)
 
-  dest = [0,0]
 
   # possible_moves = ["up", "down", "left", "right"]
   head = [board[:you][:head][:x], board[:you][:head][:y]]
