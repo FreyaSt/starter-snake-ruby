@@ -13,12 +13,11 @@ def move(board)
   
   puts "The current head location is #{head}"
   if head == [0, 0]
-    puts "Time to change targets"
-    puts board[:board][:height] - 1
+    puts "Switching target to 10, 0"
     $dest = [10, 0]
-    puts $dest
   elsif head == [10, 0]
-    puts "Got to the final target"
+    puts "Switching target to 10, 10"
+    $dest = [10, 10]
   end
   move = moveTo($dest, head)
   puts "MOVE: " + move
