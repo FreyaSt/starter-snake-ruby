@@ -2,15 +2,21 @@
 # Valid moves are "up", "down", "left", or "right".
 # TODO: Use the information in board to decide your next move.
 SNAKE_NAME = "Local-Snake-Ngrok"
+GAME_LIMIT = 300
+
 $dest = [0,0]
 $games = Hash.new(0)
 
 def move(board)
   # possible_moves = ["up", "down", "left", "right"]
   head = [board[:you][:head][:x], board[:you][:head][:y]]
-  puts board[:game][:id]
-  $games[board[:game][:id]] += 1
-  puts $games
+  game = board[:game][:id]
+  $games[game] += 1
+  if $games[game] > GAME_LIMIT
+    return "up"
+  end
+
+  
   getDest(head)
 
   move = moveTo($dest, head)
