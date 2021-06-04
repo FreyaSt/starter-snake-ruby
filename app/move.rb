@@ -9,6 +9,8 @@ def move(board)
   # possible_moves = ["up", "down", "left", "right"]
   head = [board[:you][:head][:x], board[:you][:head][:y]]
   puts board[:game][:id]
+  $games[board[:game][:id]] += 1
+  puts $games
   getDest(head)
 
   move = moveTo($dest, head)
