@@ -2,7 +2,7 @@
 # Valid moves are "up", "down", "left", or "right".
 # TODO: Use the information in board to decide your next move.
 SNAKE_NAME = "Local-Snake-Ngrok"
-dest = [0,0]
+$dest = [0,0]
 
 
 def move(board)
@@ -15,10 +15,12 @@ def move(board)
   if head == [0, 0]
     puts "Time to change targets"
     puts board[:board][:height] - 1
-    dest = [10, 0]
-    puts dest
+    $dest = [10, 0]
+    puts $dest
+  elsif head == [10, 0]
+    puts "Got to the final target"
   end
-  move = moveTo(dest, head)
+  move = moveTo($dest, head)
   puts "MOVE: " + move
   { "move": move }
 
