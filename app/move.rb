@@ -10,6 +10,8 @@ $games = Hash.new(0)
 def move(board)
   # possible_moves = ["up", "down", "left", "right"]
   head = [board[:you][:head][:x], board[:you][:head][:y]]
+  height = board[:board][:height]
+  width = board[:board][:width]
   game = board[:game][:id]
   $games[game] += 1
   if $games[game] > GAME_LIMIT
@@ -17,7 +19,7 @@ def move(board)
   end
 
   
-  getDest(head)
+  getDest(head, height, width)
 
   move = moveTo($dest, head)
   puts "MOVE: " + move
@@ -26,15 +28,15 @@ def move(board)
 
 end
 
-def getDest(head)
+def getDest(head, height, width)
   puts "The current head location is #{head}"
   if head == [0, 0]
-    $dest = [10, 0]
-  elsif head == [10, 0]
-    $dest = [10, 10]
-  elsif head == [10, 10]
-    $dest = [0, 10]
-  elsif head == [0, 10]
+    $dest = [width - 1, 0]
+  elsif head == [width - 1, 0]
+    $dest = [width - 1, height - 1]
+  elsif head == [width - 1, height - 1]
+    $dest = [0, height - 1]
+  elsif head == [0, height - 1]
     $dest = [0, 0]
   end
   
