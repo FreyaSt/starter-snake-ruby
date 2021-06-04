@@ -4,53 +4,35 @@
 SNAKE_NAME = "Local-Snake-Ngrok"
 
 def move(board)
-  localBoard = board[:board]
-  puts "This is a list of Snek"
-  height = localBoard[:height]
-  width = localBoard[:width]
-  location = {}
-  localBoard[:snakes].each { |snek|
-    puts "Snake Name: " + snek[:name]
-    if snek[:name] == SNAKE_NAME
-      puts "This is the correct snake"
-      head = snek[:head]
-      location = head
-      puts "The current head height is #{head[:y]}"
-      puts "The current head width is #{head[:x]}"
-    end
-  }
-  # Choose a random direction to move in
-  possible_moves = ["up", "down", "left", "right"]
-  move = possible_moves.sample
-  if move == "down"
-    if location[:y] == 0
-      move = "up"
-      puts "Changed direction up"
-    end
+
+  dest = [0,0]
+
+  # possible_moves = ["up", "down", "left", "right"]
+  head = [board[:you][:head][:x], board[:you][:head][:y]]
+  
+  puts "The current head location is #{head}"
+  if head == [0, 0]
+    puts "Time to change targets"
+    puts board[:board][:height] - 1
+    dest = [10, 0]
+    puts dest
   end
-  if move =="up"
-    if location[:y] == height - 1
-      move = "down"
-      puts "Changed direction down"
-    end
-  end
-
-  if move =="right"
-    if location[:x] == width - 1
-      move = "left"
-      puts "Changed direction left"
-    end
-  end
-
-  if move =="left"
-    if location[:x] == 0
-      move = "right"
-      puts "Changed direction right"
-    end
-  end
-
-
-
+  move = moveTo(dest, head)
   puts "MOVE: " + move
   { "move": move }
+
+end
+
+def moveTo(dest, head)
+  if head[0] > dest[0]
+    return "left"
+  elsif head[0] < dest[0]
+    return "right"
+  elsif head[1] < dest[1]
+    return "up"
+  elsif head[1] > dest[1]
+    return "down"
+  else
+    return "up"
+  end
 end
